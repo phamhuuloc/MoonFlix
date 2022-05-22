@@ -10,6 +10,9 @@
     url("https://cdn.hipwallpaper.com/i/98/21/dUyCkp.jpg");
   background-size: cover;
   .top {
+    position: relative;
+    z-index: 1000;
+
     .wrapper {
       padding: 20px 50px;
       display: flex;
@@ -32,20 +35,27 @@
     flex-direction: column;
     color: white;
     form {
+      a {
+        color: white;
+        text-decoration: none;
+      }
       width: 400px;
       height: 400px;
       padding: 30px;
       border-radius: 5px;
-      background-color: #0b0b0b;
+      background-color: rgba(0, 0, 0, 0.75);
       display: flex;
       flex-direction: column;
       justify-content: space-around;
       input {
         height: 42px;
         border-radius: 5px;
-        background-color: gray;
+        padding: 20px 24px;
+        background: #454545;
         color: white;
-        padding-left: 10px;
+        border: none;
+        outline: none;
+        font-size: 14px;
         &::placeholder {
           color: lightgray;
         }
