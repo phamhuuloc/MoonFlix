@@ -4,6 +4,7 @@ import { ArrowBackIos } from "@material-ui/icons";
 import "./list.scss";
 import ListItem from "../ListItem/ListItem";
 const List = ({ list }) => {
+  console.log(list);
   const listRef = useRef();
   const [isMoved, setIsMoved] = useState(false);
   const [sliderNumber, setSliderNumber] = useState(0);

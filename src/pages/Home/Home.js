@@ -15,7 +15,8 @@ const Home = ({ type }) => {
             genre ? "&genre=" + genre : ""
           }`
         );
-        setLists(res.data.data);
+        console.log(res);
+        setLists(res);
       } catch (err) {
         console.log(err);
       }

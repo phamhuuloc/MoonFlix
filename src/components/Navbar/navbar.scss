@@ -1,9 +1,7 @@
 .link {
-  color: white;
-  text-decoration: none;
-  cursor: pointer;
 }
 .navbar {
+  font-family: sans-serif;
   color: white;
   font-size: 14px;
   position: fixed;
@@ -11,7 +9,8 @@
   left: 0;
   right: 0;
   z-index: 999;
-  background: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.3), 50%);
+  // background: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.3), 50%);
+  background-color: rgba(0, 0, 0, 0.75);
   &.scrolled {
     background-color: var(--main-color);
   }
@@ -27,18 +26,64 @@
     .left {
       display: flex;
       align-items: center;
+      ul {
+        display: flex;
+        align-items: center;
+        li {
+          color: white;
+          text-decoration: none;
+          font-weight: 700;
+          padding: 5px;
+
+          position: relative;
+          margin-right: 20px;
+          font-size: 16px;
+          cursor: pointer;
+
+          &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            transition: width 0.5s ease;
+            height: 2px;
+            background-color: #ff0000;
+          }
+
+          &.active::after,
+          &:hover::after {
+            width: 100%;
+          }
+        }
+      }
       img {
         margin-right: 40px;
       }
       span {
-        margin-right: 20px;
-        font-size: 16px;
-        cursor: pointer;
       }
     }
     .right {
       display: flex;
       align-items: center;
+      .wallet {
+        display: flex;
+        align-items: center;
+        &_add_money {
+          color: #60e0af;
+          cursor: pointer;
+        }
+        &_point {
+          margin: 0 20px;
+        }
+        b {
+          color: white;
+        }
+        span {
+          color: #60e0af;
+        }
+      }
       .icon {
         margin: 0 15px;
         cursor: pointer;

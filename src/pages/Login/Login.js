@@ -4,18 +4,17 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { userSlice } from "../../redux/reducer/userSlice";
 import { toast } from "react-toastify";
+import userApi from "../../api/userApi";
 import "./login.scss";
 const Login = () => {
   const [data, setData] = useState({ email: "", password: "" });
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const handleLogin = async (e) => {
     try {
       e.preventDefault();
-      const res = await axios.post(
-        "http://localhost:8080/api/auth/login",
-        data
-      );
+      const res = await userApi.login(data);
       window.localStorage.setItem("token", res.data.token);
       window.localStorage.setItem("user", JSON.stringify(res.data.data));
       dispatch(userSlice.actions.setUser(res.data.data));

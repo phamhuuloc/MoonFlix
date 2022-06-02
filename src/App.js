@@ -6,6 +6,8 @@ import Login from "./pages/Login/Login";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Slide, ToastContainer } from "react-toastify";
+import Footer from "./components/Footer/Footer";
+import User from "./pages/user/User";
 import "react-toastify/dist/ReactToastify.css";
 const App = () => {
   const user = useSelector((state) => state.user.user);
@@ -20,6 +22,7 @@ const App = () => {
             <Route path="/movies" element={<Home type="movie" />} />
             <Route path="/series" element={<Home type="series" />} />
             <Route path="/watch" element={<Watch />} />
+            <Route path="/user/:id" element={<User />} />
           </>
         )}
       </Routes>
@@ -35,6 +38,7 @@ const App = () => {
         pauseOnHover
         transition={Slide}
       />
+      {/* <Footer /> */}
     </Router>
   );
 };
