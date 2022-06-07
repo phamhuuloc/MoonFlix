@@ -3,23 +3,22 @@ import { Info } from "@material-ui/icons";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./featured.scss";
+import movieApi from "../../api/movieApi";
 const Featured = ({ type, setGenre }) => {
+  console.log(type);
   const [content, setContent] = useState({});
   useEffect(() => {
-    try {
-      const getRandomContent = async () => {
-        const res = await axios.get(
-          `http://localhost:8080/api/movies/random?type=${type}`
-        );
-        console.log(res);
-        setContent(res);
-      };
-      getRandomContent();
-    } catch (err) {
-      console.log(err);
-    }
+    const getRandomConten = async () => {
+      try {
+        const res = await movieApi.getRandomMovie(type);
+        setContent(res.data[0]);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getRandomConten();
   }, [type]);
-  console.log(type);
+
   return (
     <div className="featured">
       {type && (
@@ -47,9 +46,8 @@ const Featured = ({ type, setGenre }) => {
           </select>
         </div>
       )}
-      <img src={content[0].img} alt="" />
+      <img src={!content.imgSm ? " " : content.imgSm} alt="" />
       <div className="info">
-        <p className="desc">{content[0].desc}</p>
         <div className="buttons">
           <button className="play">
             <PlayArrow className="button-icon" />

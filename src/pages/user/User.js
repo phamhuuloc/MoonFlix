@@ -87,9 +87,15 @@ export default function User() {
       e.preventDefault();
       const res = await userApi.updateUser(user._id, userInfo);
       toast.success(res.data.message);
-      console.log(res.data.updatedUser);
+
+      const newUserInfo = await userApi.newUserInfo(user._id);
+      window.localStorage.setItem(
+        "user",
+        JSON.stringify(newUserInfo.data.user)
+      );
+      console.log(newUserInfo);
+      // dispatch(userSlice.actions.setUser(newUserInfo.data.user));
       navigate("/");
-      dispatch(userSlice.actions.setUser(res.data.updatedUser));
     } catch (err) {
       console.log(err);
     }

@@ -15,11 +15,12 @@ const Login = () => {
     try {
       e.preventDefault();
       const res = await userApi.login(data);
-      window.localStorage.setItem("token", res.data.token);
-      window.localStorage.setItem("user", JSON.stringify(res.data.data));
-      dispatch(userSlice.actions.setUser(res.data.data));
+      window.localStorage.setItem("token", res.token);
+      window.localStorage.setItem("user", JSON.stringify(res.data));
+      dispatch(userSlice.actions.setUser(res.data));
       toast.success("Login SuccessFully!");
       navigate("/");
+      console.log(res);
     } catch (err) {
       console.log(err);
       toast.error("Wrong password or eamail!");

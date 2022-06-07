@@ -1,40 +1,45 @@
 // @use "../../scss" as *;
 
-// .footer {
-//     position: relative;
-//     padding: 6rem 2rem;
-//     background-position: top;
-//     background-size: cover;
-//     background-repeat: no-repeat;
+.footer {
+    position: relative;
+    padding: 6rem 2rem;
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-top: 80px;
+    
 
-//     &__content {
-//         max-width: 1000px;
+    &__content {
+        &__logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
 
-//         &__logo {
-//             @include flex(center, center);
-//             margin-bottom: 3rem;
-//         }
+        &__menus {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
 
-//         &__menus {
-//             display: grid;
-//             grid-template-columns: repeat(3, 1fr);
+            // @include mobile {
+            //     grid-template-columns: repeat(2, 1fr);
+            // }
+        }
 
-//             @include mobile {
-//                 grid-template-columns: repeat(2, 1fr);
-//             }
-//         }
+        &__menu {
+            // @include flex(flex-start, flex-start);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin-top: 1rem;
 
-//         &__menu {
-//             @include flex(flex-start, flex-start);
-//             flex-direction: column;
-//             margin-top: 1rem;
+            font-size: 1.5rem;
+            font-weight: 600;
 
-//             font-size: 1.5rem;
-//             font-weight: 600;
-
-//             & > * ~ * {
-//                 margin-top: 1rem;
-//             }
-//         }
-//     }
-// }
+            & > * ~ * {
+                margin-top: 1rem;
+            }
+        }
+    }
+}

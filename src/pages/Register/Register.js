@@ -18,11 +18,14 @@ const Register = () => {
     e.preventDefault();
     console.log(username);
     try {
-      await axios.post("http://localhost:8080/api/auth/register", {
-        email,
-        username,
-        password,
-      });
+      await axios.post(
+        "https://sever-json-netflix.herokuapp.com/api/auth/register",
+        {
+          email,
+          username,
+          password,
+        }
+      );
       navigate("/login");
     } catch (err) {
       console.log(err);

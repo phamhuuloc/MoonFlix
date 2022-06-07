@@ -1,74 +1,48 @@
-.listItem {
-  width: 225px;
-  height: 120px;
-  color: white;
-  background-color: var(--main-color);
-  margin-left: 5px;
-  overflow: hidden;
-  cursor: pointer;
+@use "../../scss/" as *;
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.movie-card {
+  width: 172px;
+  height: 271px;
+  margin: 0 10px;
+  position: relative;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 160%;
+  // border-radius: $border-radius;
+  border-radius: 30px;
+  margin-bottom: 1rem;
+
+  .btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
-  video {
-    width: 100%;
-    height: 140px;
-    object-fit: cover;
+
+  &::before {
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
+    bottom: 0;
+    right: 0;
+    // background-color: $black;
+    background-color: #000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    // border-radius: $border-radius;
+    border-radius: 30px;
   }
-  &:hover {
-    width: 325px;
-    height: 300px;
-    position: absolute;
-    top: -150px;
-    -webkit-box-shadow: 0px 2px 8px 2px rgba(0, 0, 0, 0.26);
-    box-shadow: 0px 2px 8px 2px rgba(0, 0, 0, 0.26);
-    img {
-      height: 140px;
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover::before {
+      opacity: 0.8;
     }
-    .itemInfo {
-      display: flex;
-      flex-direction: column;
-      padding: 8px 5px;
-      .icons {
-        display: flex;
-        margin-bottom: 10px;
-        .icon {
-          width: 30px;
-          height: 30px;
-          border: 2px solid white;
-          padding: 5px;
-          margin-right: 10px;
-          border-radius: 50%;
-        }
-      }
-      .itemInfoTop {
-        display: flex;
-        align-items: center;
-        margin-bottom: 14px;
-        span {
-          font-size: 16px;
-          font-weight: 600;
-          color: gray;
-        }
-        .limit {
-          border: 1px solid gray;
-          padding: 1px 3px;
-          margin: 0 10px;
-        }
-      }
-      .desc {
-        font-size: 13px;
-        margin-bottom: 10px;
-      }
-      .genre {
-        font-size: 14px;
-        color: lightgray;
-      }
+
+    &:hover .btn {
+      transform: translate(-50%, -50%) scale(1);
     }
   }
 }

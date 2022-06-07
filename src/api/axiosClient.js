@@ -2,7 +2,8 @@ import axios from "axios";
 import queryString from "query-string";
 
 const axiosClient = axios.create({
-  baseURL: "https://sever-json-netflix.herokuapp.com/",
+  baseURL: "https://sever-json-netflix.herokuapp.com",
+  // baseURL: "https://json-server-netflix.herokuapp.com",
   headers: {
     "Content-Type": "application/json",
   },
@@ -19,13 +20,16 @@ axiosClient.interceptors.request.use((config) => {
 });
 
 // Add a response interceptor
-axios.interceptors.response.use(
-  function (response) {
-    return response.data.data;
+axiosClient.interceptors.response.use(
+  (response) => {
+    if (response && response.data) {
+      return response.data;
+    }
+    return response;
   },
-  function (error) {
-    // Do something with response error
-    return Promise.reject(error);
+  (error) => {
+    // Handle errors
+    throw error;
   }
 );
 export default axiosClient;

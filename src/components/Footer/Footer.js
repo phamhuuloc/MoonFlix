@@ -9,17 +9,14 @@ const Footer = () => {
         <div
             className="footer"
             style={{
-                backgroundImage: `url(https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png)`,
+                backgroundImage: `url(https://raw.githubusercontent.com/trananhtuat/react-movie/main/src/assets/footer-bg.jpg)`,
             }}
         >
             <div className="footer__content container">
                 <div className="footer__content__logo">
                     <div className="logo">
-                        <img
-                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png"
-                            alt=""
-                        />
-                        <Link to="/">tMovies</Link>
+                        <img src="" alt="" />
+                        <Link to="/">FLix</Link>
                     </div>
                 </div>
                 <div className="footer__content__menus">

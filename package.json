@@ -1,7 +1,7 @@
 {
   "name": "client",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@material-ui/core": "^4.12.4",
     "@material-ui/icons": "^4.11.3",
@@ -10,6 +10,7 @@
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
+    "boxicons": "^2.1.2",
     "firebase": "^9.8.2",
     "node-sass": "^7.0.1",
     "query-string": "^7.1.1",
@@ -29,17 +30,10 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "extends": ["react-app", "react-app/jest"]
   },
   "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
+    "production": [">0.2%", "not dead", "not op_mini all"],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",

@@ -7,16 +7,17 @@ import axios from "axios";
 const Home = ({ type }) => {
   const [lists, setLists] = useState([]);
   const [genre, setGenre] = useState(null);
+
   useEffect(() => {
     const getRandomLists = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:8080/api/list${type ? "?type=" + type : ""}${
-            genre ? "&genre=" + genre : ""
-          }`
+          `https://sever-json-netflix.herokuapp.com/api/list${
+            type ? "?type=" + type : ""
+          }${genre ? "&genre=" + genre : ""}`
         );
         console.log(res);
-        setLists(res);
+        setLists(res.data.data);
       } catch (err) {
         console.log(err);
       }

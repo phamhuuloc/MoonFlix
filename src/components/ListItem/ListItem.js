@@ -1,60 +1,42 @@
-import {
-  Add,
-  PlayArrow,
-  ThumbsUpDownOutlined,
-  ThumbUpOutlined,
-  ThumbUpAltOutlined,
-  ThumbDownAltOutlined,
-} from "@material-ui/icons";
+import { PlayArrow } from "@material-ui/icons";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "./listItem.scss";
+// import {Button} from "@material-ui/core";
+import Button from "../button/Button";
 const ListItem = ({ index, item }) => {
-  const [isHovered, setIsHovered] = useState(false);
+  // const [isHovered, setIsHovered] = useState(false);
   const [movie, setMovie] = useState({});
   useEffect(() => {
     const getMovie = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:8080/api/movies/get/" + item
+          "https://sever-json-netflix.herokuapp.com/api/movies/get/" + item
         );
-        setMovie(res);
+        console.log(res.data.data);
+        setMovie(res.data.data);
       } catch (err) {
         console.log(err);
       }
     };
     getMovie();
-  }, [item]);
+  }, []);
   return (
-    <Link to={{ pathname: "/watch" }} state={{ movie: movie }}>
+    <Link
+      to={{
+        pathname: "/movie/" + movie._id,
+      }}
+      state={{ movieData: movie }}
+    >
       <div
-        className="listItem"
-        style={{ left: isHovered && index * 225 }}
-        onMouseOver={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+        className="movie-card"
+        style={{ backgroundImage: `url(${movie.img})` }}
       >
-        <img src={movie.img} alt="" />
-        {isHovered && (
-          <>
-            {/* <video src={movie.data.trailer} autoPlay={true} loop /> */}
-            <div className="itemInfo">
-              <div className="icons">
-                <PlayArrow className="icon" />
-                <Add className="icon" />
-                <ThumbUpOutlined className="icon" />
-                <ThumbDownAltOutlined className="icon" />
-              </div>
-              <div className="itemInfoTop">
-                <span>1 hours 14 mins</span>
-                <span className="limit">+{movie.limit}</span>
-                <span>{movie.year}</span>
-              </div>
-              <p className="desc">{movie.desc}</p>
-              <div className="genre">{movie.genre}</div>
-            </div>
-          </>
-        )}
+        <Button>
+          <PlayArrow />
+        </Button>
+        <h3 className="movie-card-T">{movie.title || movie.name}</h3>
       </div>
     </Link>
   );

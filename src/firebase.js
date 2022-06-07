@@ -13,13 +13,13 @@ import { getStorage } from "firebase/storage";
 //   appId: "1:15167484250:web:d584cd3bd4a87277580363",
 // };
 const firebaseConfig = {
-  apiKey: "AIzaSyCjg1Ho0SnLMYAC8D3TN4oGbxCNTzt8wZ0",
-  authDomain: "netflix-admin-70527.firebaseapp.com",
-  projectId: "netflix-admin-70527",
-  storageBucket: "netflix-admin-70527.appspot.com",
-  messagingSenderId: "578489467671",
-  appId: "1:578489467671:web:5e3e578b6562ef3977ed52",
-  measurementId: "G-TDZPN87LD6",
+  apiKey: "AIzaSyD3Jnj-z-MpU3XCNIvEQmRFKow6JIsLVX4",
+  authDomain: "netflixapp-2c04a.firebaseapp.com",
+  projectId: "netflixapp-2c04a",
+  storageBucket: "netflixapp-2c04a.appspot.com",
+  messagingSenderId: "37939138509",
+  appId: "1:37939138509:web:29c6bfa7d1fe358ec97e84",
+  measurementId: "G-03BR266MHS",
 };
 
 // Initialize Firebase
