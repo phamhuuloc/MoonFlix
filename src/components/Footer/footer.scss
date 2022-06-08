@@ -7,7 +7,6 @@
     background-size: cover;
     background-repeat: no-repeat;
     margin-top: 80px;
-    
 
     &__content {
         &__logo {
@@ -15,6 +14,10 @@
             align-items: center;
             justify-content: center;
             margin-bottom: 3rem;
+            img {
+                width: 200px;
+                height: 200px;
+            }
         }
 
         &__menus {

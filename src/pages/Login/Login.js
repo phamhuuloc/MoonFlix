@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { userSlice } from "../../redux/reducer/userSlice";
 import { toast } from "react-toastify";
 import userApi from "../../api/userApi";
+import logo from "../../images/lomo-removebg-preview.png";
 import "./login.scss";
 const Login = () => {
   const [data, setData] = useState({ email: "", password: "" });
@@ -31,16 +32,12 @@ const Login = () => {
     <div className="login">
       <div className="top">
         <div className="wrapper">
-          <img
-            className="logo"
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png"
-            alt=""
-          />
+          <img className="logo" src={logo} alt="" />
         </div>
       </div>
       <div className="container">
         <form>
-          <h1>Login</h1>
+          <h1>Đăng Nhập</h1>
           <input
             type="email"
             placeholder="Enter your email or phone number"
@@ -54,17 +51,17 @@ const Login = () => {
             onChange={(e) => setData({ ...data, password: e.target.value })}
           />
           <button className="loginButton" onClick={(e) => handleLogin(e)}>
-            <b>Sign In</b>
+            <b>Đăng Nhập</b>
           </button>
           <span>
-            Net to Netflix?
+            Net to LoMo?
             <Link to="/register">
-              <b> Sign Up Now</b>
+              <b>Đăng Ký Ngay</b>
             </Link>
           </span>
           <small>
             This page is protected by Google reCAPTCHA to ensure you're not a
-            bot. <b>Learn More</b>
+            bot. <b>Đọc Thêm</b>
           </small>
         </form>
       </div>

@@ -1,6 +1,16 @@
 .featured {
   height: 90vh;
   position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    background-image: linear-gradient(to top, #0f0f0f, rgba(#000, 0));
+  }
+
   .category {
     position: absolute;
     top: 80px;
@@ -32,6 +42,7 @@
     color: white;
     display: flex;
     flex-direction: column;
+    z-index: 1000;
     img {
       width: 400px;
       object-fit: cover;
@@ -40,6 +51,8 @@
       margin: 20px 0;
       text-align: left;
       line-height: 1.4;
+      font-weight: 600;
+      color: #fff;
     }
     .buttons {
       display: flex;

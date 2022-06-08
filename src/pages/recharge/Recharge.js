@@ -16,11 +16,11 @@ const Recharge = () => {
     const vnpayPayment = async () => {
       let accessToken = window.localStorage.getItem("token");
       const res = await axios.post(
-        // `https://sever-json-netflix.herokuapp.com/api/users/vnpay_payment
+        `https://sever-json-netflix.herokuapp.com/api/users/vnpay_payment
 
-        // `
+        `,
 
-        "http://localhost:8080/api/users/vnpay_payment",
+        // "http://localhost:8080/api/users/vnpay_payment",
 
         {
           amount: money,

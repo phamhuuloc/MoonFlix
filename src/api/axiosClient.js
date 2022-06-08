@@ -3,7 +3,7 @@ import queryString from "query-string";
 
 const axiosClient = axios.create({
   baseURL: "https://sever-json-netflix.herokuapp.com",
-  // baseURL: "https://json-server-netflix.herokuapp.com",
+  // baseURL: "http://localhost:8080",
   headers: {
     "Content-Type": "application/json",
   },

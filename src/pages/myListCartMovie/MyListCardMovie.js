@@ -8,7 +8,9 @@ const MyListCardMovie = ({ id }) => {
   useEffect(() => {
     const getMovieInfo = async () => {
       try {
-        const res = await movieApi.getMovieInfo(id);
+        let data = { movie_id: id };
+        console.log(data);
+        const res = await movieApi.getMovieInfo(data);
         setMovie(res.data);
       } catch (err) {
         console.log(err);

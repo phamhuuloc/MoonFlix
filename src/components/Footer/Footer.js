@@ -1,5 +1,5 @@
 import React from "react";
-
+import logo from "../../images/lomo-removebg-preview.png";
 import "./footer.scss";
 
 import { Link } from "react-router-dom";
@@ -15,8 +15,9 @@ const Footer = () => {
             <div className="footer__content container">
                 <div className="footer__content__logo">
                     <div className="logo">
-                        <img src="" alt="" />
-                        <Link to="/">FLix</Link>
+                        <Link to="/" className="logo">
+                            <img className="" src={logo} alt="" />
+                        </Link>
                     </div>
                 </div>
                 <div className="footer__content__menus">

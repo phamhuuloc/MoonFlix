@@ -48,6 +48,7 @@ const Featured = ({ type, setGenre }) => {
       )}
       <img src={!content.imgSm ? " " : content.imgSm} alt="" />
       <div className="info">
+        <span className="desc">{content.desc}</span>
         <div className="buttons">
           <button className="play">
             <PlayArrow className="button-icon" />

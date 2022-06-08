@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import logo from "../../images/lomo-removebg-preview.png";
 
 import "./register.scss";
 const Register = () => {
@@ -36,11 +37,7 @@ const Register = () => {
     <div className="register">
       <div className="top">
         <div className="wrapper">
-          <img
-            className="logo"
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png"
-            alt=""
-          />
+          <img className="logo" src={logo} alt="" />
           <button className="loginButton">
             <Link to="/login">
               <b>Sign In</b>

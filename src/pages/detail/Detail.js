@@ -29,7 +29,8 @@ const Detail = () => {
                 const data = { movie_id: item._id };
                 console.log(data);
                 const res = await userApi.byMovie(data);
-                toast.success(res.data.message);
+                console.log(res.message);
+                toast.success(res.message);
                 const newUserInfo = await userApi.newUserInfo(userInfo._id);
                 window.localStorage.setItem(
                     "user",
@@ -38,7 +39,6 @@ const Detail = () => {
                 dispatch(userSlice.actions.setUser(newUserInfo.user));
             } catch (err) {
                 console.log(err);
-                toast.error("Wallet balance not enough to by movie!");
             }
         } else {
             toast.error("The movie already exits in your movie list!");
@@ -68,12 +68,13 @@ const Detail = () => {
                         <div className="movie-content__info">
                             <h1 className="title">{item.title || item.name}</h1>
                             <ul>
-                                <li>Year: {item.year}</li>
-                                <li>Genre: {item.genre}</li>
-                                <li>Limit: {item.limit}</li>
+                                <li>Năm Phát Hành: {item.year}</li>
+                                <li>Thể Loại: {item.genre}</li>
+                                <li>Độ Tuổi: {item.limit}</li>
                             </ul>
                             <h3>
-                                Price: {item.price === 0 ? "Free" : item.price}$
+                                Giá:{" "}
+                                {item.price === 0 ? "Free" : `${item.price}đ`}
                             </h3>
                             <div className="movie-content__buttons">
                                 <a
@@ -86,13 +87,13 @@ const Detail = () => {
                                     className="movie-content__buttons-by"
                                     onClick={() => handleByMovie()}
                                 >
-                                    By Movie
+                                    Mua Phim
                                 </a>
                             </div>
                         </div>
                     </div>
                     <div className="movie-container">
-                        <h2>Description</h2>
+                        <h2>Nội Dung</h2>
                         <p className="overview">{item.desc}</p>
                         <div className="section mb-3">
                             <div className="video">

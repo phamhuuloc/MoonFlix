@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import { useSearchParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import "./donePayment.scss";
 import axios from "axios";
 
@@ -43,8 +44,8 @@ const DonePayment = () => {
           const token = window.localStorage.getItem("token");
           console.log(currentParams);
           let res = await axios.post(
-            // "https://sever-json-netflix.herokuapp.com/api/users/vnpay_ipn",
-            "http://localhost:8080/api/users/vnpay_ipn",
+            "https://sever-json-netflix.herokuapp.com/api/users/vnpay_ipn",
+            // "http://localhost:8080/api/users/vnpay_ipn",
             currentParams,
             {
               headers: {
@@ -87,7 +88,7 @@ const DonePayment = () => {
             <h2 className="mt-4 text-danger">{error.message}</h2>
             <div className="mx-auto">
               <button className="mt-2 btn btn-success">
-                <a>Quay lại quyên góp</a>
+                <Link to="/">Home</Link>
               </button>
             </div>
           </div>
@@ -99,10 +100,6 @@ const DonePayment = () => {
               <h2 className="mb-4 text-success">
                 Thanh toán nạp tiền thành công
               </h2>
-              <div className="payment-element">
-                <label>Tài khoản người nhận</label>
-                <p>{paymentInfo.userInfo.name}</p>
-              </div>
               <div className="payment-element">
                 <label>Email người nhận</label>
                 <p>{paymentInfo.userInfo.email}</p>
@@ -134,7 +131,7 @@ const DonePayment = () => {
             </div>
             <div className="mx-auto">
               <button className="btn btn-success">
-                <a>Quyên góp ngay</a>
+                <Link to="/">Home</Link>
               </button>
             </div>
           </div>

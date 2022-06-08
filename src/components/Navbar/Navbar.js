@@ -8,6 +8,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { userSlice } from "../../redux/reducer/userSlice";
 import userApi from "../../api/userApi";
+import logo from "../../images/lomo-removebg-preview.png";
 import "boxicons";
 import "./navbar.scss";
 const Navbar = () => {
@@ -47,25 +48,25 @@ const Navbar = () => {
   }, []);
   const headerNav = [
     {
-      display: "HomePage",
+      display: "Trang chủ",
       path: "/",
     },
     {
-      display: "Series",
+      display: "Phim Bộ",
       path: "/series",
     },
     {
-      display: "Movies",
+      display: "Phim Lẻ",
       path: "/movies",
     },
     {
       display: "Vouchers",
       path: "/vouchers",
     },
-    // {
-    //   display: "My List",
-    //   path: "/mylist",
-    // },
+    {
+      display: "Phim Của Tôi",
+      path: "/mylist",
+    },
   ];
   const { pathname } = useLocation();
 
@@ -87,11 +88,7 @@ const Navbar = () => {
         <div className="container">
           <div className="left">
             <Link to="/" className="logo">
-              <i class="bx bx-movie-play bx-tada main-color"></i>Fl
-              <span class="main-color main-color">i</span>x{/* <img */}
-              {/*   src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png" */}
-              {/*   alt="" */}
-              {/* /> */}
+              <img className="" src={logo} alt="" />
             </Link>
             <ul>
               {headerNav.map((e, i) => {
@@ -106,11 +103,11 @@ const Navbar = () => {
           <div className="right">
             <div className="wallet">
               <span className="wallet_balance">
-                <b>Balance: </b>
+                <b>Số Dư Tài Khoản: </b>
                 {userInfo.wallet_balance}
               </span>
               <span className="wallet_point">
-                <b>Point: </b>
+                <b>Điểm: </b>
                 {userInfo.point}
               </span>
 
@@ -130,11 +127,11 @@ const Navbar = () => {
                     to={{ pathname: "/user/" + userInfo._id }}
                     state={{ user: userInfo }}
                   >
-                    Setting
+                    Cài Đặt
                   </Link>
                 </li>
                 <li className="option-item" onClick={() => handleLogout()}>
-                  Logout
+                  Đăng Xuất
                 </li>
               </ul>
             </div>

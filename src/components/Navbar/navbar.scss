@@ -3,7 +3,11 @@
 .logo {
   font-size: 2rem;
   font-weight: 900;
-  margin-right: 40px;
+  img {
+    width: 112px;
+    height: 140px;
+    object-fit: cover;
+  }
 }
 .main-color {
   color: #c0392b;
@@ -68,6 +72,10 @@
       }
       img {
         margin-right: 40px;
+        width: 112px;
+        height: 100%;
+        object-fit: cover;
+        display: flex;
       }
       span {
       }

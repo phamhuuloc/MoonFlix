@@ -7,13 +7,17 @@ import "./listItem.scss";
 import Button from "../button/Button";
 const ListItem = ({ index, item }) => {
   // const [isHovered, setIsHovered] = useState(false);
+  console.log(item);
   const [movie, setMovie] = useState({});
   useEffect(() => {
     const getMovie = async () => {
+      const data = { movie_id: item };
       try {
-        const res = await axios.get(
-          "https://sever-json-netflix.herokuapp.com/api/movies/get/" + item
+        const res = await axios.post(
+          "https://sever-json-netflix.herokuapp.com/api/movies/get",
+          data
         );
+        console.log(res);
         console.log(res.data.data);
         setMovie(res.data.data);
       } catch (err) {

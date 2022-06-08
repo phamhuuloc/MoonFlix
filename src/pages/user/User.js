@@ -175,40 +175,14 @@ export default function User() {
                   />
                 </div>
                 <div className="userUpdateItem">
-                  <label>Wallet Balance</label>
+                  <label>New Password</label>
                   <input
-                    type="number"
-                    name="wallet_balance"
-                    onChange={handleChange}
-                    placeholder="0"
-                    className="userUpdateInput"
-                  />
-                </div>
-                <div className="userUpdateItem">
-                  <label>Point</label>
-                  <input
-                    type="number"
-                    name="point"
-                    placeholder=""
+                    type="password"
+                    name="password"
                     onChange={handleChange}
                     className="userUpdateInput"
                   />
                 </div>
-                {user.isAdmin ? (
-                  <div></div>
-                ) : (
-                  <div className="userUpdateItem">
-                    <label>Type</label>
-                    <select
-                      name="isAdmin"
-                      className="userUpdateInput"
-                      onChange={handleChange}
-                    >
-                      <option value="false">isMember</option>
-                      <option value="true">isAdmin</option>
-                    </select>
-                  </div>
-                )}
               </div>
               <div className="userUpdateRight">
                 <div className="userUpdateUpload">
