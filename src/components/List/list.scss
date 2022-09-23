@@ -1,6 +1,6 @@
 .list {
   color: white;
-  margin-top: 40px;
+  margin-top: 50px;
 
   .list-title {
     color: white;
@@ -16,6 +16,7 @@
       display: flex;
       width: max-content;
       margin-top: 10px;
+      margin-bottom: 40px;
       transition: all 0.5s linear;
     }
     .sliderArrow {
