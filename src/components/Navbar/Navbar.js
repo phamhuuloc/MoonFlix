@@ -77,7 +77,7 @@ const Navbar = () => {
   });
 
   const handleLogout = () => {
-    window.localStorage.removeItem("token");
+    window.localStorage.removeItem("user");
     dispatch(userSlice.actions.setUser(""));
     navigate("/login");
   };

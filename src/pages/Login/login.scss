@@ -17,6 +17,9 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      position: absolute;
+      z-index: -1;
+
       .logo {
         display: flex;
         align-items: flex-start;
@@ -79,6 +82,22 @@
       b {
         color: white;
       }
+    }
+    &_header{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      i{
+        font-size: 40px;
+        color: red;
+        cursor: pointer;
+        transition: all 0.2s linear;
+        &:hover{
+          color: white;
+        }
+      }
+      
+
     }
   }
 }

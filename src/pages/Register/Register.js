@@ -1,20 +1,26 @@
+
+/* eslint-disable no-undef */
 import axios from "axios";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState,useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../images/lomo-removebg-preview.png";
+import handleError from "../../handleError";
+import { toast } from "react-toastify";
 
 import "./register.scss";
 const Register = () => {
+  let emailRef = useRef();
+  let faceioInstance = null
+
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
-  const emailRef = useRef();
-
+  
   const handleStart = () => {
     setEmail(emailRef.current.value);
   };
-
+  
   const handleFinish = async (e) => {
     e.preventDefault();
     console.log(username);
@@ -33,6 +39,55 @@ const Register = () => {
     }
   };
 
+useEffect(() => {
+  const script = document.createElement('script')
+  script.src = '//cdn.faceio.net/fio.js'
+  script.async = true
+  script.onload = () => loaded()
+  document.body.appendChild(script)
+
+  return () => {
+    document.body.removeChild(script)
+  }
+// eslint-disable-next-line react-hooks/exhaustive-deps
+})
+
+const loaded = () => {
+  console.log(faceIO)
+  if (faceIO && !faceioInstance) {
+    faceioInstance = new faceIO('fioa2005')
+  }
+}
+const faceRegistration = async (e) => {
+  e.preventDefault();
+  try {
+    const userInfo = await faceioInstance.enroll({
+      locale: "auto",
+      payload: {
+        email: email,
+        username: username,
+      },
+    })
+    await axios.post(
+        "https://sever-json-netflix.herokuapp.com/api/auth/register",
+        {
+          email,
+          username,
+          password:userInfo.facialId,
+        }
+      );
+      navigate("/login");
+
+    console.log(userInfo.payload.email)
+    console.log('Unique Facial ID: ', userInfo.facialId)
+    console.log('Enrollment Date: ', userInfo.timestamp)
+    console.log('Gender: ', userInfo.details.gender)
+    console.log('Age Approximation: ', userInfo.details.age)
+  } catch (errorCode) {
+    console.log(errorCode)
+    handleError(errorCode)
+  }
+}
   return (
     <div className="register">
       <div className="top">
@@ -54,7 +109,7 @@ const Register = () => {
         {!email ? (
           <div className="input">
             <input type="email" placeholder="email address" ref={emailRef} />
-            <button className="registerButton" onClick={handleStart}>
+            <button className="registerButton" onClick={() => handleStart()}>
               <b>Get Started</b>
             </button>
           </div>
@@ -72,11 +127,13 @@ const Register = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <button className="registerButton" onClick={handleFinish}>
+<button className="registerButton" onClick={(e) => handleFinish(e)}>
               Start
             </button>
-          </form>
+
+                   </form>
         )}
+   
       </div>
     </div>
   );
