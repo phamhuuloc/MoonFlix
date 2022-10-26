@@ -55,7 +55,7 @@ useEffect(() => {
 const loaded = () => {
   console.log(faceIO)
   if (faceIO && !faceioInstance) {
-    faceioInstance = new faceIO('fioa2005')
+    faceioInstance = new faceIO('fioa8e11')
   }
 }
 const faceRegistration = async (e) => {
@@ -127,7 +127,7 @@ const faceRegistration = async (e) => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-<button className="registerButton" onClick={(e) => handleFinish(e)}>
+<button className="registerButton" onClick={(e) => faceRegistration(e)}>
               Start
             </button>
 
