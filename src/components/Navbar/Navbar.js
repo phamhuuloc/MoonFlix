@@ -56,7 +56,7 @@ const Navbar = () => {
       path: "/series",
     },
     {
-      display: "Phim Lẻ",
+      display: "Phim Lẻ", 
       path: "/movies",
     },
     {
@@ -101,7 +101,7 @@ const Navbar = () => {
             </ul>
           </div>
           <div className="right">
-            <div className="wallet">
+           {/*  <div className="wallet">
               <span className="wallet_balance">
                 <b>Số Dư Tài Khoản: </b>
                 {userInfo.wallet_balance}
@@ -114,7 +114,7 @@ const Navbar = () => {
               <Link to="/recharge">
                 <AddCircleOutline className="wallet_add_money" />
               </Link>
-            </div>
+            </div> */}
 
             <Search className="icon" />
             <Notifications className="icon" />

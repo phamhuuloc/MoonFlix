@@ -2,7 +2,7 @@ import axios from "axios";
 import queryString from "query-string";
 
 const axiosClient = axios.create({
-  baseURL: "https://sever-json-netflix.herokuapp.com",
+  baseURL: "https://movieserverapi.azurewebsites.net/",
   // baseURL: "http://localhost:8080",
   headers: {
     "Content-Type": "application/json",
@@ -13,7 +13,8 @@ axiosClient.interceptors.request.use((config) => {
   // Handle token here ...
   let accessToken = window.localStorage.getItem("token");
   if (accessToken) {
-    config.headers.token = `Bearer ${accessToken}`;
+    //config.headers.token = `Bearer ${accessToken}`;
+    config.headers.common['Authorization'] = `Bearer ${accessToken}`;
   }
 
   return config;

@@ -27,7 +27,7 @@ const Voucher = () => {
   const handleGetVoucher = async (id) => {
     try {
       const data = { voucher_id: id };
-      const res = await userApi.byVoucher(data);
+      const res = await userApi.buyVoucher(data);
       console.log(res);
       toast.success(res.message);
       const newUserInfo = await userApi.newUserInfo(userInfo._id);

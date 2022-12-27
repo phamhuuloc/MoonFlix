@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Featured from "../../components/Featured/Featured";
 import Navbar from "../../components/Navbar/Navbar";
+import Banner from "../../components/Banner/Banner";
 import List from "../../components/List/List";
 import "./Home.scss";
 import axios from "axios";

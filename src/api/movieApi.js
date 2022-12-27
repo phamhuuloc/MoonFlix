@@ -2,12 +2,18 @@ import axiosClient from "./axiosClient";
 
 const movieApi = {
   getMovies() {
-    const url = "api/movies";
+    const url = "movies";
     return axiosClient.get(url);
   },
-  getMovieInfo(data) {
-    const url = `api/movies/get`;
+
+  getMovieInfo(data, id) {
+    const url = `api/movies/${id}`;
     return axiosClient.post(url, data);
+  },
+
+  getTopMovie() {
+    const url = "api/movies/top"
+    return axiosClient.get(url);
   },
 
   getRandomMovie(type) {
@@ -15,4 +21,5 @@ const movieApi = {
     return axiosClient.get(url);
   },
 };
+
 export default movieApi;

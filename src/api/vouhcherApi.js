@@ -2,11 +2,12 @@ import axiosClient from "./axiosClient";
 
 const voucherApi = {
   getVoucherList() {
-    const url = "api/vouchers/list?page=1";
+    const url = "vouchers";
     return axiosClient.get(url);
   },
-  getVoucher() {
-    const url = "api/vouchers/list?page=1";
+
+  getVoucher(id) {
+    const url = `voucher/{id}`;
     return axiosClient.get(url);
   },
 };

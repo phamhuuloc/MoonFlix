@@ -1,6 +1,7 @@
 .featured {
   height: 90vh;
   position: relative;
+  z-index: 10;
   &::after {
     content: "";
     position: absolute;
@@ -37,7 +38,7 @@
   .info {
     position: absolute;
     width: 35%;
-    left: 50px;
+    left: 90px;
     bottom: 100px;
     color: white;
     display: flex;
@@ -46,6 +47,11 @@
     img {
       width: 400px;
       object-fit: cover;
+    }
+    .name_movie {
+      font-size: 70px;
+      font-weight: 600;
+      color: #fff;
     }
     .desc {
       margin: 20px 0;
@@ -64,15 +70,16 @@
         margin-right: 20px;
         display: flex;
         align-items: center;
-        font-weight: 500;
-        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;;
+        font-size: 12px;
         cursor: pointer;
-        &.plau {
-          background-color: white;
-          color: var(--main-color);
+        &.play {
+          background-color: #ff0000;
+          color: #fff;
         }
         &.more {
-          background-color: gray;
+          background-color: #ff0000;
           color: white;
         }
         .button-icon {
