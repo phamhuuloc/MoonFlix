@@ -1,11 +1,11 @@
 import axiosClient from "./axiosClient";
 const listMovieApi = {
   getListMovie() {
-    const url = "list";
+    const url = "api/lists/movies";
     return axiosClient.get(url);
   },
 
-/* 
+  /* 
   getListMoviewByID(id) {
       const url = `api/lists/${id}`
       return axiosClient.get(url, id);
@@ -25,7 +25,5 @@ const listMovieApi = {
     const url = `create/list`;
     return axiosClient.post(url);
   }, */
-
-
 };
 export default listMovieApi;

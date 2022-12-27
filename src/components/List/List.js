@@ -3,8 +3,8 @@ import { ArrowForwardIos, EcoOutlined } from "@material-ui/icons";
 import { ArrowBackIos } from "@material-ui/icons";
 import "./list.scss";
 import ListItem from "../ListItem/ListItem";
+
 const List = ({ list }) => {
-  console.log(list);
   const listRef = useRef();
   const [isMoved, setIsMoved] = useState(false);
   const [sliderNumber, setSliderNumber] = useState(0);
@@ -21,7 +21,7 @@ const List = ({ list }) => {
   };
   return (
     <div className="list">
-      <span className="list-title">{list.title}</span>
+      <span className="list-title">{list[0]}</span>
       <div className="wrapper">
         <ArrowBackIos
           className="sliderArrow left"
@@ -29,7 +29,7 @@ const List = ({ list }) => {
           style={{ display: !isMoved && "none" }}
         />
         <div className="container" ref={listRef}>
-          {list.content.map((item, index) => {
+          {list[1].map((item, index) => {
             return <ListItem index={index} item={item} />;
           })}
         </div>

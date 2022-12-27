@@ -6,10 +6,13 @@ import "./listItem.scss";
 // import {Button} from "@material-ui/core";
 import Button from "../button/Button";
 const ListItem = ({ index, item }) => {
+
   // const [isHovered, setIsHovered] = useState(false);
-  console.log(item);
+  console.log("CHeck===>>>> item", item);
+
   const [movie, setMovie] = useState({});
-  useEffect(() => {
+
+  /* useEffect(() => {
     const getMovie = async () => {
       const data = { movie_id: item };
       try {
@@ -25,22 +28,22 @@ const ListItem = ({ index, item }) => {
       }
     };
     getMovie();
-  }, []);
+  }, []); */
   return (
     <Link
       to={{
-        pathname: "/movie/" + movie._id,
+        pathname: "api/movies/" + item.id,
       }}
-      state={{ movieData: movie }}
+      state={{ movieData: item }}
     >
       <div
         className="movie-card"
-        style={{ backgroundImage: `url(${movie.img})` }}
+        style={{ backgroundImage: `url(${item.img})` }}
       >
         <Button>
           <PlayArrow />
         </Button>
-        <h3 className="movie-card-T">{movie.title || movie.name}</h3>
+        <h3 className="movie-card-T">{item.title || item.name}</h3>
       </div>
     </Link>
   );
