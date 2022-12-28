@@ -1,7 +1,7 @@
 .featured {
   height: 90vh;
   position: relative;
-  z-index: 10;
+  z-index: 2;
   &::after {
     content: "";
     position: absolute;
@@ -11,6 +11,7 @@
     height: 60%;
     background-image: linear-gradient(to top, #0f0f0f, rgba(#000, 0));
   }
+
 
   .category {
     position: absolute;
@@ -86,6 +87,13 @@
           margin-right: 10px;
         }
       }
+    }
+
+    .list_Movie_Container {
+      background-color: #fff;
+      width: 100%;
+      margin-top: 100px;
+      z-index: 10;
     }
   }
 }

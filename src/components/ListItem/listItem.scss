@@ -3,14 +3,14 @@
 .movie-card {
   width: 172px;
   height: 271px;
-  margin: 0 10px;
+  margin: 0 15px;
   position: relative;
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
   padding-top: 160%;
   // border-radius: $border-radius;
-  border-radius: 30px;
+  border-radius: 15px;
   margin-bottom: 1rem;
 
   .btn {
@@ -37,7 +37,7 @@
     opacity: 0;
     transition: opacity 0.3s ease;
     // border-radius: $border-radius;
-    border-radius: 30px;
+    border-radius: 15px;
   }
 
   @media (hover: hover) and (pointer: fine) {

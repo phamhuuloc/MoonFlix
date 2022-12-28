@@ -8,23 +8,26 @@ import { userSlice } from "../../redux/reducer/userSlice";
 import { useSelector, useDispatch } from "react-redux";
 import "./detail.scss";
 import axios from "axios";
-import Review from "./Review";
+import Review from "../../components/Review/Review";
 
 const Detail = () => {
   const location = useLocation();
   const item = location.state.movieData;
+
+  console.log("CHECKK DETAIL==>>> ", item);
+
   let userInfo = useSelector((state) => state.user.user);
   const userMovies = userInfo.movies_list;
   const iframeRef = useRef(null);
   const dispatch = useDispatch();
 
-  const result = userMovies.find((movie) => movie.movie_id === item._id);
+  /*  const result = userMovies.find((movie) => movie.movie_id === item._id); */
   console.log(userMovies);
   console.log(item._id);
 
-  console.log(result);
+  /*  console.log(result); */
 
-  const handleByMovie = async () => {
+  /*  const handleByMovie = async () => {
     if (!result) {
       try {
         const data = { movie_id: item._id };
@@ -41,7 +44,7 @@ const Detail = () => {
     } else {
       toast.error("The movie already exits in your movie list!");
     }
-  };
+  }; */
 
   return (
     <>
@@ -66,18 +69,27 @@ const Detail = () => {
             <div className="movie-content__info">
               <h1 className="title">{item.title || item.name}</h1>
               <ul>
-                <li>Năm Phát Hành: {item.year}</li>
-                <li>Thể Loại: {item.genre}</li>
-                <li>Độ Tuổi: {item.limit}</li>
+                <li className="desc_movie">{item._desc}</li>
+                <li className="year_release">
+                  <span className="font_weight">Năm Phát Hành:</span>{" "}
+                  {item.year}
+                </li>
+                {/*  <li>Thể Loại: {item.genre}</li> */}
+                <li className="age">
+                  <span className="font_weight">Độ Tuổi:</span>{" "}
+                  <span className="age_limit">{item._limit}+</span>
+                </li>
               </ul>
-              <h3>Giá: {item.price === 0 ? "Free" : `${item.price}đ`}</h3>
+              <h3 className="price_movie">
+                Giá: {item.price === 0 ? "Free" : `${item.price}đ`}
+              </h3>
               <div className="movie-content__buttons">
                 <a className="movie-content__buttons-trailer" href="#trailer">
                   Trailer
                 </a>
                 <a
                   className="movie-content__buttons-by"
-                  onClick={() => handleByMovie()}
+                  /*  onClick={() => handleByMovie()} */
                 >
                   Mua Phim
                 </a>
@@ -112,6 +124,12 @@ const Detail = () => {
               {/*     type="similar" */}
               {/*     id={item.id} */}
               {/* /> */}
+            </div>
+            <div className="section mb-3">
+              <div className="section__header mb-2">
+                <h2>Review(1)</h2>
+              </div>
+              <Review />
             </div>
           </div>
         </>
