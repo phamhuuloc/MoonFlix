@@ -29,6 +29,10 @@ const userApi = {
     const url = `api/user/update/${id}`;
     return axiosClient.post(url, user);
   },
+  updateWalletBalanceUser(amount, id) {
+    const url = `api/user/update/wallet/${amount}/${id}`;
+    return axiosClient.post(url);
+  },
 
   deleteUser(id) {
     const url = `api/user/delete/${id}`;
