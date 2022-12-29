@@ -4,6 +4,10 @@ const userApi = {
     const url = "api/user/login";
     return axiosClient.post(url, data);
   },
+  getUserInfo(id) {
+    const url = `user/${id}`;
+    return axiosClient.get(url);
+  },
   buyMovie(data) {
     const url = "api/userMovie/by-movie";
     return axiosClient.post(url, data);

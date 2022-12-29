@@ -6,9 +6,12 @@ import { Link } from "react-router-dom";
 import "./donePayment.scss";
 import axios from "axios";
 import userApi from "../../api/userApi";
+import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { userSlice } from "../../redux/reducer/userSlice";
 
 const DonePayment = () => {
-
+  const dispatch = useDispatch()
   const [paymentInfo, setPaymentInfo] = useState({
     payment: {
       vnp_Amount: "",
@@ -38,18 +41,25 @@ const DonePayment = () => {
   const [searchParams] = useSearchParams();
 
   const currentParams = Object.fromEntries([...searchParams]);
-  const [Info ,setInfo] = useState(null);
-  console.log(Info)
+  const [Info ,setInfo] = useState(currentParams);
+  console.log(currentParams)
 
   useEffect(() => {
     if (user) {
       const getPayment = async () => {
         try {
           // const token = window.localStorage.getItem("token");
-          // console.log(currentParams);
-          setInfo(currentParams)
-          const res = userApi.updateWalletBalanceUser(Info.vnp_Amount,user.id);
-          console.log(res);
+        
+          
+          const res = await userApi.updateWalletBalanceUser(Info.vnp_Amount,user.id)
+          const newUserInfo = await userApi.getUserInfo(user.id);
+          window.localStorage.setItem(
+              "user",
+              JSON.stringify(newUserInfo.user)
+          );
+          console.log(newUserInfo.data);
+          dispatch(userSlice.actions.setUser(newUserInfo.data));
+          toast.success(res.message);
           // let res = await axios.post(
           //   "https://sever-json-netflix.herokuapp.com/api/user/vnpay_ipn",
      

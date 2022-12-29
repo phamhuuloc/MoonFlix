@@ -30,7 +30,6 @@ const Detail = () => {
     const getMovie = async () => {
       try {
         const resUserMovie = await userApi.getAllMovieOfUser(user.id);
-        
         dispatch(userMovieSlice.actions.setUserMovie(resUserMovie.data));
         
         
