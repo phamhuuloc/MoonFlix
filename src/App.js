@@ -40,7 +40,7 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={user !== null ? <Home /> : <Register />} />
+        <Route path="/" element={user !== null ? <Home type={null} /> : <Register />} />
         <Route path="/register" element={!user ? <Register /> : <Home />} />
         <Route path="/login" element={!user ? <Login /> : <Home />} />
         {user && (
@@ -49,8 +49,11 @@ const App = () => {
             <Route path="/series" element={<Home type="series" />} />
             <Route path="/watch" element={<Watch />} />
             <Route path="/user/:id" element={<User />} />
-            <Route path="api/movies/:id" element={<Detail />} />
+            <Route path="/api/movies/:id" element={<Detail />} />
+            <Route path="movies/api/movies/:id" element={<Detail />} />
+            <Route path="series/api/movies/:id" element={<Detail />} />
             <Route path="/mylist" element={<MyList />} />
+            <Route path="mylist/api/movies/:id" element={<Detail />} />
             <Route path="/recharge" element={<Recharge />} />
             <Route path="/donepayment" element={<DonePayment />} />
             <Route path="/vouchers" element={<Voucher />} />

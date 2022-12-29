@@ -48,15 +48,15 @@ const Navbar = () => {
   }, []);
   const headerNav = [
     {
-      display: "Trang chủ",
+      display: "Home",
       path: "/",
     },
     {
-      display: "Phim Bộ",
+      display: "Series",
       path: "/series",
     },
     {
-      display: "Phim Lẻ", 
+      display: "Movies", 
       path: "/movies",
     },
     {
@@ -64,8 +64,12 @@ const Navbar = () => {
       path: "/vouchers",
     },
     {
-      display: "Phim Của Tôi",
+      display: "My movie",
       path: "/mylist",
+    },
+    {
+      display: "Deposit money",
+      path: "/recharge",
     },
   ];
   const { pathname } = useLocation();
@@ -118,7 +122,7 @@ const Navbar = () => {
 
             <Search className="icon" />
             <Notifications className="icon" />
-            <img src={userInfo ? userInfo.profilePic : ""} alt="" />
+            <img src={userInfo.profilePic != "" ? userInfo.profilePic : "https://i.pinimg.com/originals/fb/8e/8a/fb8e8a96fca2f049334f312086a6e2f6.png"} alt="" />
             <div className="profile">
               <ArrowDropDown className="icon" />
               <ul className="options">
@@ -127,11 +131,11 @@ const Navbar = () => {
                     to={{ pathname: "/user/" + userInfo._id }}
                     state={{ user: userInfo }}
                   >
-                    Cài Đặt
+                    Setting
                   </Link>
                 </li>
                 <li className="option-item" onClick={() => handleLogout()}>
-                  Đăng Xuất
+                 Logout
                 </li>
               </ul>
             </div>

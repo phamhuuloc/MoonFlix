@@ -25,6 +25,7 @@
         margin-left: 60px;
     }
     li {
+        margin: 30px;
         color: #fff;
     }
 }
@@ -35,7 +36,43 @@
     margin-top: 10px;
     display: flex;
     flex-direction: column;
+    button {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        cursor: pointer;
+      }
+      .on {
+        color: #deb217;  
+      }
+      .off {
+        color: #ccc;
+      }
     border-top: 1px solid #515050;
+    *{
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items:  center;
+    }
+    .rate {
+        float: left;
+        height: 46px;
+        padding: 0 15px;
+    }
+    .rate:not(:checked) > input {
+        position:absolute;
+        top:-9999px;
+    }
+    .star-rating-title {
+      
+            color : white;
+            font-size: 20px;
+            font-weight: 500;
+        
+    }
+
+    
 
     .image_user {
         width: 50px;
@@ -84,4 +121,5 @@
     .review_post_btn:hover {
         opacity: 0.8;
     }
+    
 }

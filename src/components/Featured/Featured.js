@@ -6,7 +6,7 @@ import Banner from "../Banner/Banner";
 import axios from "axios";
 import "./featured.scss";
 import movieApi from "../../api/movieApi";
-
+import { Link } from "react-router-dom";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
@@ -15,7 +15,7 @@ const Featured = ({ type, setGenre }) => {
   const [content, setContent] = useState({});
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const [listMovie, setListMovie] = useState([]);
+  const [topMovie, setTopMovie] = useState([]);
 
  
   const getTopTenMovie = async () => {
@@ -24,7 +24,7 @@ const Featured = ({ type, setGenre }) => {
       console.log(res.success);
       setTopMovie(res.data);
       // if (res && res.success === true) {
-      //   setTopMovie(res.data);
+        setTopMovie(res.data);
       // }
     } catch (err) {
       console.log(err);
@@ -62,6 +62,7 @@ const Featured = ({ type, setGenre }) => {
           {
             <Carousel
             responsive={responsive}
+            autoPlaySpeed={1000}
             >{
             topMovie.map((movie,  index) => {
               return (
@@ -79,11 +80,30 @@ const Featured = ({ type, setGenre }) => {
                     <div className="buttons">
                       <button className="play">
                         <PlayArrow className="button-icon" />
-                        <span>Play</span>
+                        <span>
+                        <Link
+                            to={{
+                              pathname: "/watch",
+                            }}
+                            state={{ movieData: movie }}
+                          >
+                          Trailer
+                        </Link>
+                        </span>
                       </button>
                       <button className="more">
                         <Info className="button-icon" />
-                        <span>More</span>
+                        <span>
+                            <Link
+                            className=""
+                            to={{
+                              pathname: "api/movies/" + movie.id,
+                            }}
+                            state={{ movieData: movie }}
+                          >
+                            More
+                        </Link>
+                          </span>
                       </button>
                      </div>
                </div>
@@ -104,55 +124,7 @@ const Featured = ({ type, setGenre }) => {
    
 
 
-  return (
-    <div className="featured">
-      {type && (
-        <div className="category">
-          <span>{type === "movie" ? "Movies" : "Series"}</span>
-          <select
-            name="genre"
-            id="genre"
-            onChange={(e) => setGenre(e.target.value)}
-          >
-            <option>genre</option>
-            <option value="adventure">Adventure</option>
-            <option value="comedy">Comedy</option>
-            <option value="crime">Crime</option>
-            <option value="fantasy">Fantasy</option>
-            <option value="historical">Historical</option>
-            <option value="horror">Horror</option>
-            <option value="romance">Romance</option>
-            <option value="sci-fi">Sci-fi</option>
-            <option value="thriller">Thriller</option>
-            <option value="western">Western</option>
-            <option value="animation">Animation</option>
-            <option value="drama">Drama</option>
-            <option value="documentary">Documentary</option>
-          </select>
-        </div>
-      )}
-      <img src={!content.imgSm ? " " : content.imgSm} alt="" />
-      <div className="info">
-        <span className="name_movie">Reborn</span>
-        <span className="desc">
-          {content.desc}Movies 8 and 9 are both based on story arcs of the
-          anime/manga of One Piece. Episode of Arabasta: The Desert Princess and
-          the Pirates is based on the Arabasta Arc and Episode of Chopper Plus:
-          Bloom in Winter, Miracle Sakura is based on the Drum Island Arc.
-        </span>
-        <div className="buttons">
-          <button className="play">
-            <PlayArrow className="button-icon" />
-            <span>Play</span>
-          </button>
-          <button className="more">
-            <Info className="button-icon" />
-            <span>More</span>
-          </button>
-        </div>
-      </div>
-    </div>
-  );
+
 
 };
 export default Featured;

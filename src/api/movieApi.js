@@ -6,9 +6,9 @@ const movieApi = {
     return axiosClient.get(url);
   },
 
-  getMovieInfo(data, id) {
+  getMovieInfo(id) {
     const url = `api/movies/${id}`;
-    return axiosClient.post(url, data);
+    return axiosClient.get(url);
   },
 
   getTopMovie() {

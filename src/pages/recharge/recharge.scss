@@ -1,5 +1,6 @@
 .recharge {
-    background-color: #fff;
+    // background-color: #fff;  
+    background-color: #0f0f0f;
     height: 100vh;
     &-form-control {
         display: block;
@@ -19,6 +20,12 @@
     }
     &-form-group {
         margin: 0;
+        label{
+            color: white;
+            font-size: 20px;
+            display: block;
+            margin-bottom: 10px;
+        }
     }
 
     &-modal {

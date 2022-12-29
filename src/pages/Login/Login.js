@@ -66,7 +66,7 @@ const Login = () => {
   const loaded = () => {
     console.log(faceIO)
     if (faceIO && !faceioInstance) {
-      faceioInstance = new faceIO('fioa8e11')
+      faceioInstance = new faceIO('fioa7256')
     }
   }
   // handle login with face ID

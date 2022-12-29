@@ -8,18 +8,18 @@ const MyListCardMovie = ({ id }) => {
   useEffect(() => {
     const getMovieInfo = async () => {
       try {
-        let data = { movie_id: id };
-        console.log(data);
-        const res = await movieApi.getMovieInfo(data);
-        setMovie(res.data);
+        const res = await movieApi.getMovieInfo(id);
+        console.log(res.data);
+        setMovie(res.data); 
       } catch (err) {
         console.log(err);
       }
     };
     getMovieInfo();
   }, []);
+  console.log(movie)
   return (
-    <li key={movie._id} className="my-list__container__item">
+    <li key={movie.id} className="my-list__container__item">
       <iframe
         width="400px"
         height="100%"
@@ -30,17 +30,17 @@ const MyListCardMovie = ({ id }) => {
         allowfullscreen
       ></iframe>
 
-      <h3>{movie.title}</h3>
+      <h3>Name: {movie.title}</h3>
       <div className="my-list__container__item__info">
-        <span>{movie.genre}</span>
-        <span>{movie.year}</span>
-        <span>{movie.limit}</span>
+        {/* <span>{movie.genre}</span> */}
+        <span>Year: {movie.year}</span>
+        <span>Limit: {movie._limit}</span>
       </div>
       <div className="my-list__container__buttons">
         <Link
           className="my-list__container__buttons-trailer"
           to={{
-            pathname: "/movie/" + movie._id,
+            pathname: "api/movies/" + movie.id,
           }}
           state={{ movieData: movie }}
         >

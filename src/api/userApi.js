@@ -9,14 +9,21 @@ const userApi = {
     return axiosClient.post(url, data);
   },
   buyVoucher(data) {
-    const url = "api/userVoucher/by-voucher";
+    const url = "/api/userVoucher/by-voucher";
     return axiosClient.post(url, data);
   },
-
-/*   newUserInfo(id) {
-    const url = `user/${id}`;
-    return axiosClient.get(url);
-  }, */
+  getAllMovieOfUser (id) {
+      const url  = `/api/user/list-movies/${id}`
+      return axiosClient.get(url)
+  },
+  getAllVoucherOfUser (id) {
+    const url  = `/api/user/list-vouchers/${id}`
+    return axiosClient.get(url)
+},
+// /*   newUserInfo(id) {
+//     const url = `user/${id}`;
+//     return axiosClient.get(url);
+//   }, */
 
   updateUser(id, user) {
     const url = `api/user/update/${id}`;

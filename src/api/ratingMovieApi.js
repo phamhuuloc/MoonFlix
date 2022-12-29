@@ -1,13 +1,13 @@
 import axiosClient from "./axiosClient";
-const listMovieApi = {
-  getListMovie() {
-    const url = "api/lists/movies";
-    return axiosClient.get(url);
+const ratingMovieAPi = {
+  createRating(data) {
+    const url = "create/rating";
+    return axiosClient.post(url,data);
   },
-  getListMovieWithType(type) {
-    const url = `api/lists/movies/${type}`
+  getAllRatingOfMovie(id){
+    const url = `get/ratings/movie/${id}`
     return axiosClient.get(url);
-  },
+  }
   /* 
   getListMoviewByID(id) {
       const url = `api/lists/${id}`
@@ -29,4 +29,4 @@ const listMovieApi = {
     return axiosClient.post(url);
   }, */
 };
-export default listMovieApi;
+export default ratingMovieAPi;

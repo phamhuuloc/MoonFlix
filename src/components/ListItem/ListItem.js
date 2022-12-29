@@ -8,8 +8,8 @@ import Button from "../button/Button";
 const ListItem = ({ index, item }) => {
 
   // const [isHovered, setIsHovered] = useState(false);
-  console.log("CHeck===>>>> item", item);
 
+  
   const [movie, setMovie] = useState({});
 
   /* useEffect(() => {

@@ -16,6 +16,7 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
+  const [face_id , setFaceId] = useState("");
   
   const handleStart = () => {
     setEmail(emailRef.current.value);
@@ -26,11 +27,12 @@ const Register = () => {
     console.log(username);
     try {
       await axios.post(
-        "https://sever-json-netflix.herokuapp.com/api/auth/register",
+        "https://movieserverapi.azurewebsites.net/api/user/register",
         {
           email,
-          username,
           password,
+          username,
+          face_id
         }
       );
       navigate("/login");
@@ -55,7 +57,7 @@ useEffect(() => {
 const loaded = () => {
   console.log(faceIO)
   if (faceIO && !faceioInstance) {
-    faceioInstance = new faceIO('fioa8e11')
+    faceioInstance = new faceIO('fioa7256')
   }
 }
 const faceRegistration = async (e) => {
@@ -69,11 +71,12 @@ const faceRegistration = async (e) => {
       },
     })
     await axios.post(
-        "https://sever-json-netflix.herokuapp.com/api/auth/register",
+        "https://movieserverapi.azurewebsites.net/api/user/register",
         {
           email,
-          username,
-          password:userInfo.facialId,
+          password: password,
+          username: username,
+          face_id:userInfo.facialId,
         }
       );
       navigate("/login");
