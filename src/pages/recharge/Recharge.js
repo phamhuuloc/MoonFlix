@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import "./recharge.scss";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 const Recharge = () => {
   const [money, setMoney] = useState(0);
   const token = window.localStorage.getItem("token");
-
+  const user = useSelector((state) => state.user.user)
   const handleOnChange = (e) => {
     const { name, value } = e.target;
     setMoney(value);
@@ -16,27 +17,25 @@ const Recharge = () => {
     const vnpayPayment = async () => {
       let accessToken = window.localStorage.getItem("token");
       const res = await axios.post(
-        `https://sever-json-netflix.herokuapp.com/api/users/vnpay_payment
+        `https://movieserverapi.azurewebsites.net/api/user/vn_payment
 
         `,
-
-        // "http://localhost:8080/api/users/vnpay_payment",
-
         {
-          amount: money,
-          orderDescription: "NapTienMuaPhim",
-          orderTyp: "vn",
-          language: "vn",
+        
+          
+            "orderType": "vn",
+            "amount": money,
+            "orderDescription": "naptienmuaphim",
+            "name": user.username
+          
+     
+        
         },
-        {
-          headers: {
-            token: `Bearer ${accessToken}`,
-          },
-        }
+      
       );
       alert(res.data.message);
       if (!res.data.err) {
-        window.open(res.data.vnpayUrl);
+        window.open(res.data.url);
       }
     };
     vnpayPayment();

@@ -7,6 +7,7 @@ import "./donePayment.scss";
 import axios from "axios";
 
 const DonePayment = () => {
+
   const [paymentInfo, setPaymentInfo] = useState({
     payment: {
       vnp_Amount: "",
@@ -18,7 +19,6 @@ const DonePayment = () => {
     },
     userInfo: {
       name: "",
-      email: "",
     },
   });
 
@@ -44,34 +44,28 @@ const DonePayment = () => {
           const token = window.localStorage.getItem("token");
           console.log(currentParams);
           let res = await axios.post(
-            "https://sever-json-netflix.herokuapp.com/api/users/vnpay_ipn",
-            // "http://localhost:8080/api/users/vnpay_ipn",
-            currentParams,
-            {
-              headers: {
-                token: `Bearer ${token}`,
-              },
-            }
+            "https://movieserverapi.azurewebsites.net/api/user/vnpay_ipn",
           );
+          console.log(res)
 
           setPaymentInfo({
             payment: {
-              vnp_Amount: res.data.paymentInfo.vnp_Amount,
-              vnp_BankCode: res.data.paymentInfo.vnp_BankCode,
-              vnp_BankTranNo: res.data.paymentInfo.vnp_BankTranNo,
-              vnp_CardType: res.data.paymentInfo.vnp_CardType,
-              vnp_OrderInfo: res.data.paymentInfo.vnp_OrderInfo,
-              vnp_PayDate: res.data.paymentInfo.vnp_PayDate,
+              vnp_Amount: res.currentParams.vnp_Amount,
+              vnp_BankCode: res.currentParams.vnp_BankCode,
+              vnp_BankTranNo: res.currentParams.vnp_BankTranNo,
+              vnp_CardType: res.currentParams.vnp_CardType,
+              vnp_OrderInfo: res.currentParams.vnp_OrderInfo,
+              vnp_PayDate: res.currentParams.vnp_PayDate,
             },
             userInfo: {
-              name: res.data.userInfo.name,
-              email: res.data.userInfo.email,
+              name: res.userInfo.name,
+              email: res.userInfo.email,
             },
           });
         } catch (err) {
           setError({
             error: true,
-            message: err.response.data.message,
+            message: err.response.message,
           });
         }
       };
