@@ -41,10 +41,10 @@ const Voucher = () => {
         const data = { uv_voucher_id: id, uv_user_id: user.id };
         console.log(data)
         
-        const res = await userApi.buyVoucher(data);
-        console.log(res)
+        // const res = await userApi.buyVoucher(data);
+        // console.log(res)
         
-        // toast.success(res.message);
+        toast.success("Get voucher Successfully!");
     
         // dispatch(userVoucherSlice.actions.setuserVoucher(res.data));
         // const newUserInfo = await userApi.newUserInfo(userInfo._id);
