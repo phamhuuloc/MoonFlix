@@ -13,7 +13,7 @@ const userApi = {
     return axiosClient.post(url, data);
   },
   buyVoucher(data) {
-    const url = "/api/userVoucher/by-voucher";
+    const url = "api/userVoucher/by-voucher";
     return axiosClient.post(url, data);
   },
   getAllMovieOfUser (id) {
